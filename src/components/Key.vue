@@ -25,6 +25,7 @@ export default {
   color: var(--bright_blue);
   margin-right: 5px;
   font-weight: bold;
+  user-select: none;
 }
 
 .keySquare.pressed {

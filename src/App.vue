@@ -132,7 +132,7 @@ export default {
     } = Keys;
     return {
       pressedKeys: new Set(),
-      selectedLayout: "moonlander",
+      selectedLayout: "tenkeyless",
       availableLayouts: ["tenkeyless", "moonlander"],
       layouts: {
         tenkeyless: {
@@ -299,7 +299,7 @@ export default {
               ShiftRight,
             },
             row5: {
-              ControlRight,
+              ControlLeft,
               Backquote,
               ArrowLeft,
               ArrowRight,
@@ -308,6 +308,7 @@ export default {
               ArrowDown,
               BracketLeft,
               BracketRight,
+              ControlRight,
             },
             row6: {
               Backspace,
@@ -434,6 +435,7 @@ h6 {
   padding: 8px 16px;
   border-radius: 5px;
   font-weight: bold;
+  user-select: none;
 }
 
 .buttonContainer button.active {
