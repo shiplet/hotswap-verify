@@ -8,6 +8,11 @@
     etc..) and this will tick off each one you type.
   </p>
   <p>
+    Note that because some keys are duplicates, you may find empty boxes even
+    though it worked. Just tap the blank key a few times and it should toggle
+    the dupe. If not, you've got a key that needs re-seating!
+  </p>
+  <p>
     It's currently only set up for a US-style tenkeyless, and my personal layout
     of the ZSA Moonlander. I'm open to adding more in the future.
   </p>
