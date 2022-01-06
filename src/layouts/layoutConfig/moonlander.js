@@ -75,11 +75,13 @@ export const moonlander = {
       ControlRight: Key.ControlRight,
     },
     row6: {
+      MetaLeft: Key.MetaLeft,
       Backspace: Key.Backspace,
       Escape: Key.Escape,
       Delete: Key.Delete,
     },
     row7: {
+      MetaRight: Key.MetaRight,
       Space: Key.Space,
       Enter: Key.Enter,
       Escape: Key.Escape,

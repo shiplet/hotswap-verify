@@ -14,7 +14,13 @@
   </p>
   <p>
     It's currently only set up for a US-style tenkeyless, and my personal layout
-    of the ZSA Moonlander. I'm open to adding more in the future.
+    of the ZSA Moonlander.
+  </p>
+  <p>
+    If you'd like to add a new layout, open a PR at my github repo:
+    <a href="https://github.com/shiplet/hotswap-verify" target="_blank"
+      >hotswap-verify</a
+    >.
   </p>
   <div class="selectContainer">
     <select

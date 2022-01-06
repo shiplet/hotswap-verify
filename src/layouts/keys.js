@@ -75,6 +75,7 @@ export const Slash = "Slash";
 export const ShiftRight = "ShiftRight";
 export const AltLeft = "AltLeft";
 export const Space = "Space";
+export const MetaLeft = "MetaLeft";
 export const MetaRight = "MetaRight";
 export const ControlRight = "ControlRight";
 export const ArrowLeft = "ArrowLeft";
