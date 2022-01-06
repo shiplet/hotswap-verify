@@ -16,15 +16,22 @@
     It's currently only set up for a US-style tenkeyless, and my personal layout
     of the ZSA Moonlander. I'm open to adding more in the future.
   </p>
-  <div class="buttonContainer">
-    <button
-      v-for="button in availableLayouts"
-      :class="`${selectedLayout === button ? 'active' : ''}`"
-      :key="button"
-      @click.prevent="chooseLayout(button)"
+  <div class="selectContainer">
+    <select
+      class="styledSelect"
+      name="layout"
+      id="layout"
+      v-model="selectedLayout"
     >
-      {{ button }}
-    </button>
+      <option value="" hidden>Select Layout</option>
+      <option
+        v-for="layout in availableLayouts"
+        :value="layout"
+        :key="`layout-${layout}`"
+      >
+        {{ layout }}
+      </option>
+    </select>
   </div>
   <div class="keyContainer">
     <div
@@ -44,289 +51,19 @@
 
 <script>
 import Key from "./components/Key.vue";
-import Keys from "./assets/keys";
+import { tenkeyless, moonlander } from "./layouts";
 
 export default {
   name: "App",
   components: { Key },
   data() {
-    const {
-      Escape,
-      F1,
-      F2,
-      F3,
-      F4,
-      F5,
-      F6,
-      F7,
-      F8,
-      F9,
-      F10,
-      F11,
-      F12,
-      ScrollLock,
-      Pause,
-      Backquote,
-      Digit1,
-      Digit2,
-      Digit3,
-      Digit4,
-      Digit5,
-      Digit6,
-      Digit7,
-      Digit8,
-      Digit9,
-      Digit0,
-      Minus,
-      Equal,
-      Backspace,
-      Insert,
-      Home,
-      PageUp,
-      Tab,
-      KeyQ,
-      KeyW,
-      KeyE,
-      KeyR,
-      KeyT,
-      KeyY,
-      KeyU,
-      KeyI,
-      KeyO,
-      KeyP,
-      BracketLeft,
-      BracketRight,
-      Backslash,
-      Delete,
-      End,
-      PageDown,
-      ControlLeft,
-      CapsLock,
-      KeyA,
-      KeyS,
-      KeyD,
-      KeyF,
-      KeyG,
-      KeyH,
-      KeyJ,
-      KeyK,
-      KeyL,
-      Semicolon,
-      Quote,
-      Enter,
-      ShiftLeft,
-      KeyZ,
-      KeyX,
-      KeyC,
-      KeyV,
-      KeyB,
-      KeyN,
-      KeyM,
-      Comma,
-      Period,
-      Slash,
-      ShiftRight,
-      AltLeft,
-      Space,
-      MetaRight,
-      ControlRight,
-      ArrowLeft,
-      ArrowUp,
-      ArrowDown,
-      ArrowRight,
-    } = Keys;
     return {
       pressedKeys: new Set(),
       selectedLayout: "tenkeyless",
       availableLayouts: ["tenkeyless", "moonlander"],
       layouts: {
-        tenkeyless: {
-          keys: {
-            row1: {
-              Escape,
-              F1,
-              F2,
-              F3,
-              F4,
-              F5,
-              F6,
-              F7,
-              F8,
-              F9,
-              F10,
-              F11,
-              F12,
-              ScrollLock,
-              Pause,
-            },
-            row2: {
-              Backquote,
-              Digit1,
-              Digit2,
-              Digit3,
-              Digit4,
-              Digit5,
-              Digit6,
-              Digit7,
-              Digit8,
-              Digit9,
-              Digit0,
-              Minus,
-              Equal,
-              Backspace,
-              Insert,
-              Home,
-              PageUp,
-            },
-            row3: {
-              Tab,
-              KeyQ,
-              KeyW,
-              KeyE,
-              KeyR,
-              KeyT,
-              KeyY,
-              KeyU,
-              KeyI,
-              KeyO,
-              KeyP,
-              BracketLeft,
-              BracketRight,
-              Backslash,
-              Delete,
-              End,
-              PageDown,
-            },
-            row4: {
-              ControlLeft,
-              CapsLock,
-              KeyA,
-              KeyS,
-              KeyD,
-              KeyF,
-              KeyG,
-              KeyH,
-              KeyJ,
-              KeyK,
-              KeyL,
-              Semicolon,
-              Quote,
-              Enter,
-            },
-            row5: {
-              ShiftLeft,
-              KeyZ,
-              KeyX,
-              KeyC,
-              KeyV,
-              KeyB,
-              KeyN,
-              KeyM,
-              Comma,
-              Period,
-              Slash,
-              ShiftRight,
-            },
-            row6: {
-              AltLeft,
-              Space,
-              MetaRight,
-              ControlRight,
-            },
-            arrowKeys: {
-              ArrowLeft,
-              ArrowUp,
-              ArrowDown,
-              ArrowRight,
-            },
-          },
-        },
-        moonlander: {
-          keys: {
-            row1: {
-              Equal,
-              Digit1,
-              Digit2,
-              Digit3,
-              Digit4,
-              Digit5,
-              Digit6,
-              Digit7,
-              Digit8,
-              Digit9,
-              Digit0,
-              Minus,
-            },
-            row2: {
-              Tab,
-              KeyQ,
-              KeyW,
-              KeyE,
-              KeyR,
-              KeyT,
-              Home,
-              PageUp,
-              KeyY,
-              KeyU,
-              KeyI,
-              KeyO,
-              KeyP,
-              Backslash,
-            },
-            row3: {
-              ControlLeft,
-              KeyA,
-              KeyS,
-              KeyD,
-              KeyF,
-              KeyG,
-              End,
-              PageDown,
-              KeyH,
-              KeyJ,
-              KeyK,
-              KeyL,
-              Semicolon,
-              Quote,
-            },
-            row4: {
-              ShiftLeft,
-              KeyZ,
-              KeyX,
-              KeyC,
-              KeyV,
-              KeyB,
-              KeyN,
-              KeyM,
-              Comma,
-              Period,
-              Slash,
-              ShiftRight,
-            },
-            row5: {
-              ControlLeft,
-              Backquote,
-              ArrowLeft,
-              ArrowRight,
-              AltLeft,
-              ArrowUp,
-              ArrowDown,
-              BracketLeft,
-              BracketRight,
-              ControlRight,
-            },
-            row6: {
-              Backspace,
-              Escape,
-              Delete,
-            },
-            row7: {
-              Space,
-              Enter,
-              Escape,
-            },
-          },
-        },
+        tenkeyless,
+        moonlander,
       },
     };
   },
@@ -339,12 +76,6 @@ export default {
         this.pressedKeys.add(e.code);
       }
     });
-  },
-  methods: {
-    chooseLayout(layout) {
-      this.pressedKeys = new Set();
-      this.selectedLayout = layout;
-    },
   },
 };
 </script>
@@ -425,7 +156,7 @@ h6 {
   color: var(--bright_green);
 }
 
-.buttonContainer {
+.selectContainer {
   margin: 50px auto;
   width: 20vw;
   display: flex;
@@ -433,7 +164,7 @@ h6 {
   align-items: center;
 }
 
-.buttonContainer button {
+.selectContainer button {
   border: 1px solid var(--faded_aqua);
   background-color: var(--dark0_soft);
   color: var(--bright_aqua);
@@ -443,9 +174,13 @@ h6 {
   user-select: none;
 }
 
-.buttonContainer button.active {
+.selectContainer button.active {
   background-color: var(--faded_aqua);
   color: var(--dark0_hard);
+}
+
+.styledSelect {
+  padding: 6px 12px;
 }
 
 .keyRow {
