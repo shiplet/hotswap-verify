@@ -51,7 +51,7 @@
 
 <script>
 import Key from "./components/Key.vue";
-import { tenkeyless, moonlander } from "./layouts";
+import { tenkeyless, moonlander, ship_map_gmmk_pro } from "./layouts";
 
 export default {
   name: "App",
@@ -60,10 +60,11 @@ export default {
     return {
       pressedKeys: new Set(),
       selectedLayout: "tenkeyless",
-      availableLayouts: ["tenkeyless", "moonlander"],
+      availableLayouts: ["tenkeyless", "moonlander", "ship_map_gmmk_pro"],
       layouts: {
         tenkeyless,
         moonlander,
+        ship_map_gmmk_pro,
       },
     };
   },
