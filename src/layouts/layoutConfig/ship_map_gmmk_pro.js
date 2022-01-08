@@ -84,7 +84,7 @@ export const ship_map_gmmk_pro = {
       End: Key.End,
     },
     row6: {
-      ControlLeft: Key.ControlLeft,
+      CapsLock: Key.CapsLock,
       AltLeft: Key.AltLeft,
       Space: Key.Space,
       MetaRight: Key.MetaRight,
