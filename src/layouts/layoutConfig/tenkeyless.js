@@ -89,6 +89,7 @@ export const tenkeyless = {
     },
     row6: {
       AltLeft: Key.AltLeft,
+      MetaLeft: Key.MetaLeft,
       Space: Key.Space,
       MetaRight: Key.MetaRight,
       ControlRight: Key.ControlRight,
